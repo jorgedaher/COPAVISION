@@ -49,20 +49,8 @@ public:
     }
 
     void simularJogoAutomatizado() {
-        int rankCasa = timeCasa->getRankingFifa();
-        int rankFora = timeFora->getRankingFifa();
-        
         int golsC = rand() % 4; 
         int golsF = rand() % 4; 
-
-        if (rankCasa < rankFora) {
-            int diferenca = rankFora - rankCasa;
-            golsC += (diferenca / 20);
-        } 
-        else if (rankFora < rankCasa) {
-            int diferenca = rankCasa - rankFora;
-            golsF += (diferenca / 20);
-        }
 
         cout << "Simulando: " << timeCasa->getNome() << " x " << timeFora->getNome() << "..." << endl;
         jogarFaseGrupos(golsC, golsF);

@@ -15,7 +15,6 @@ private:
     string nome;
     string continente;
     int titulosMundiais;
-    int rankingFifa;
     
     int pontos;
     int golsPro;
@@ -25,15 +24,25 @@ private:
     NoJogador* cabecaElenco;
 
 public:
-    Selecao(string n, string cont, int titulos, int ranking) {
+    Selecao(string n, string cont, int titulos) {
         nome = n;
         continente = cont;
         titulosMundiais = titulos;
-        rankingFifa = ranking;
         pontos = 0;
         golsPro = 0;
         golsContra = 0;
         vitorias = 0;
+        cabecaElenco = nullptr;
+    }
+
+    ~Selecao() {
+        NoJogador* atual = cabecaElenco;
+        while (atual != nullptr) {
+            NoJogador* proximo = atual->proximo;
+            delete atual->atleta;
+            delete atual;
+            atual = proximo;
+        }
         cabecaElenco = nullptr;
     }
 
@@ -106,7 +115,7 @@ public:
         return nullptr;
     }
 
-    // Lista jogadores cujo nome comeca com o termo digitado (case-insensitive)
+    // Lista jogadores cujo nome (ou sobrenome) comeca com o termo digitado (case-insensitive)
     vector<Jogador*> buscarJogadoresPorPrefixo(string termoBusca) {
         vector<Jogador*> encontrados;
         string termoLower = termoBusca;
@@ -119,7 +128,42 @@ public:
             transform(nomeLower.begin(), nomeLower.end(), nomeLower.begin(),
                       [](unsigned char c) { return tolower(c); });
 
+            bool achouPrefixo = false;
+
+            // Prefixo no nome completo (ex.: "vin" -> "vinicius jr")
             if (!termoLower.empty() && nomeLower.rfind(termoLower, 0) == 0) {
+                achouPrefixo = true;
+            }
+
+            // Prefixo em qualquer palavra do nome (ex.: "mba" -> "kylian mbappe")
+            if (!achouPrefixo && !termoLower.empty()) {
+                size_t inicio = 0;
+                while (inicio < nomeLower.size()) {
+                    while (inicio < nomeLower.size() && nomeLower[inicio] == ' ') {
+                        inicio++;
+                    }
+                    if (inicio >= nomeLower.size()) {
+                        break;
+                    }
+
+                    size_t fim = nomeLower.find(' ', inicio);
+                    string palavra;
+                    if (fim == string::npos) {
+                        palavra = nomeLower.substr(inicio);
+                        inicio = nomeLower.size();
+                    } else {
+                        palavra = nomeLower.substr(inicio, fim - inicio);
+                        inicio = fim + 1;
+                    }
+
+                    if (palavra.rfind(termoLower, 0) == 0) {
+                        achouPrefixo = true;
+                        break;
+                    }
+                }
+            }
+
+            if (achouPrefixo) {
                 encontrados.push_back(atual->atleta);
             }
             atual = atual->proximo;
@@ -133,8 +177,6 @@ public:
     int getSaldoGols() { return golsPro - golsContra; }
     int getGolsPro() { return golsPro; }
     int getVitorias() { return vitorias; }
-    int getRankingFifa() { return rankingFifa; }
-
     void adicionarVitoria() { pontos += 3; vitorias++; }
     void adicionarEmpate() { pontos += 1; }
     void registrarGols(int marcados, int sofridos) {

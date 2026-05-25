@@ -35,7 +35,7 @@ public:
         cout << "=============================================" << endl;
         
         for (int i = 0; i < 4; i++) {
-            cout << "[" << i + 1 << "] " << times[i]->getNome() << " (Ranking FIFA: " << times[i]->getRankingFifa() << ")" << endl;
+            cout << "[" << i + 1 << "] " << times[i]->getNome() << endl;
         }
         cout << "---------------------------------------------" << endl;
 

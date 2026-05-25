@@ -2,7 +2,6 @@
 #define ARVOREMATAMATA_HPP
 
 #include <iostream>
-#include <iomanip> 
 #include "NoArvore.hpp"
 
 using namespace std;
@@ -24,18 +23,6 @@ public:
             cout << "\n=============================================" << endl;
             cout << "              " << no->nomeFase << "              " << endl;
             cout << "=============================================" << endl;
-            
-            int rank1 = no->time1->getRankingFifa();
-            int rank2 = no->time2->getRankingFifa();
-            int somaRankings = rank1 + rank2;
-            
-            double chance1 = ((double)rank2 / somaRankings) * 100.0;
-            double chance2 = ((double)rank1 / somaRankings) * 100.0;
-
-            cout << "Odds de Vitoria (Baseado na FIFA): " << endl;
-            cout << fixed << setprecision(1); 
-            cout << no->time1->getNome() << " (" << chance1 << "%) x (" 
-                 << chance2 << "%) " << no->time2->getNome() << endl;
             cout << "---------------------------------------------" << endl;
 
             int gols1, gols2;
