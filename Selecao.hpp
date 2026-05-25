@@ -5,6 +5,7 @@
 #include <string>
 #include <algorithm> 
 #include <cctype>    
+#include <vector>
 #include "NoJogador.hpp"
 
 using namespace std;
@@ -83,6 +84,48 @@ public:
             atual = atual->proximo;
         }
         return nullptr;
+    }
+
+    // Busca por nome completo (case-insensitive)
+    Jogador* buscarJogadorNomeExato(string nomeBusca) {
+        string nomeBuscaLower = nomeBusca;
+        transform(nomeBuscaLower.begin(), nomeBuscaLower.end(), nomeBuscaLower.begin(), 
+                  [](unsigned char c) { return tolower(c); });
+
+        NoJogador* atual = cabecaElenco;
+        while (atual != nullptr) {
+            string nomeLower = atual->atleta->getNome();
+            transform(nomeLower.begin(), nomeLower.end(), nomeLower.begin(),
+                      [](unsigned char c) { return tolower(c); });
+
+            if (nomeLower == nomeBuscaLower) {
+                return atual->atleta;
+            }
+            atual = atual->proximo;
+        }
+        return nullptr;
+    }
+
+    // Lista jogadores cujo nome comeca com o termo digitado (case-insensitive)
+    vector<Jogador*> buscarJogadoresPorPrefixo(string termoBusca) {
+        vector<Jogador*> encontrados;
+        string termoLower = termoBusca;
+        transform(termoLower.begin(), termoLower.end(), termoLower.begin(),
+                  [](unsigned char c) { return tolower(c); });
+
+        NoJogador* atual = cabecaElenco;
+        while (atual != nullptr) {
+            string nomeLower = atual->atleta->getNome();
+            transform(nomeLower.begin(), nomeLower.end(), nomeLower.begin(),
+                      [](unsigned char c) { return tolower(c); });
+
+            if (!termoLower.empty() && nomeLower.rfind(termoLower, 0) == 0) {
+                encontrados.push_back(atual->atleta);
+            }
+            atual = atual->proximo;
+        }
+
+        return encontrados;
     }
 
     string getNome() { return nome; }

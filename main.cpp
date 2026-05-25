@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include <cstdlib>
 #include <ctime>
 #include "Jogador.hpp"
@@ -12,24 +13,80 @@ using namespace std;
 
 // Funcao global de barra de pesquisa com tratamento de erros e espacos
 Jogador* barraDePesquisa(Selecao* todasSelecoes[], int totalSelecoes) {
+    struct OpcaoBusca {
+        Jogador* jogador;
+        Selecao* selecao;
+    };
+
     string termo;
-    Jogador* encontrado = nullptr;
 
     while (true) {
         cout << "Digite o nome do jogador (ou parte do nome): ";
         // getline com ws limpa qualquer buffer anterior e aceita espacos ("Vini Jr")
-        getline(cin >> ws, termo); 
+        getline(cin >> ws, termo);
 
+        if (termo.empty()) {
+            cout << "[ERRO] Digite pelo menos 1 caractere para pesquisar.\n" << endl;
+            continue;
+        }
+
+        // Se o usuario digitar o nome completo, retorna imediatamente.
         for (int i = 0; i < totalSelecoes; i++) {
-            encontrado = todasSelecoes[i]->buscarJogadorPorNome(termo);
-            if (encontrado != nullptr) {
-                cout << "-> Encontrado com sucesso: " << encontrado->getNome() 
+            Jogador* exato = todasSelecoes[i]->buscarJogadorNomeExato(termo);
+            if (exato != nullptr) {
+                cout << "-> Encontrado com sucesso: " << exato->getNome()
                      << " (" << todasSelecoes[i]->getNome() << ")\n" << endl;
-                return encontrado;
+                return exato;
             }
         }
-        
-        cout << "[ERRO] Jogador nao encontrado! Tente novamente.\n" << endl;
+
+        vector<OpcaoBusca> opcoes;
+
+        for (int i = 0; i < totalSelecoes; i++) {
+            vector<Jogador*> encontrados = todasSelecoes[i]->buscarJogadoresPorPrefixo(termo);
+            for (Jogador* jogador : encontrados) {
+                opcoes.push_back({jogador, todasSelecoes[i]});
+            }
+        }
+
+        if (opcoes.empty()) {
+            cout << "[ERRO] Nenhum jogador encontrado com esse inicio de nome. Tente novamente.\n" << endl;
+            continue;
+        }
+
+        if (opcoes.size() == 1) {
+            cout << "-> Encontrado com sucesso: " << opcoes[0].jogador->getNome()
+                 << " (" << opcoes[0].selecao->getNome() << ")\n" << endl;
+            return opcoes[0].jogador;
+        }
+
+        cout << "\nOpcoes encontradas:\n";
+        for (size_t i = 0; i < opcoes.size(); i++) {
+            cout << (i + 1) << ". " << opcoes[i].jogador->getNome()
+                 << " (" << opcoes[i].selecao->getNome() << ")\n";
+        }
+
+        cout << "Escolha o numero do jogador correto: ";
+        int escolha = 0;
+        cin >> escolha;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "[ERRO] Entrada invalida! Digite apenas numeros.\n" << endl;
+            continue;
+        }
+
+        cin.ignore(10000, '\n');
+
+        if (escolha < 1 || escolha > static_cast<int>(opcoes.size())) {
+            cout << "[ERRO] Numero fora das opcoes! Tente novamente.\n" << endl;
+            continue;
+        }
+
+        cout << "-> Selecionado: " << opcoes[escolha - 1].jogador->getNome()
+             << " (" << opcoes[escolha - 1].selecao->getNome() << ")\n" << endl;
+        return opcoes[escolha - 1].jogador;
     }
 }
 
@@ -84,6 +141,11 @@ int main() {
     cout << "\n=============================================" << endl;
     cout << "             PREMIACOES DA COPA              " << endl;
     cout << "=============================================" << endl;
+
+    cout << "\n--- JOGADORES DISPONIVEIS POR EQUIPE ---" << endl;
+    for (int i = 0; i < 4; i++) {
+        catalogoSelecoes[i]->exibirElenco();
+    }
 
     cout << "\n--- ESCOLHA O MELHOR JOGADOR DA COPA ---\n";
     Jogador* melhorJogador = barraDePesquisa(catalogoSelecoes, 4);
