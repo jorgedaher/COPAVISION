@@ -1,0 +1,12 @@
+.DS_Store
+
+# Build outputs
+main
+copavision
+copa
+*.exe
+*.out
+*.o
+
+# VS Code local settings
+.vscode/
