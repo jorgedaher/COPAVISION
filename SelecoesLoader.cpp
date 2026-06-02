@@ -23,6 +23,27 @@ string trimCSV(const string& texto) {
     return texto.substr(inicio, fim - inicio);
 }
 
+bool tentarExtrairNumeroCamisa(const string& observacao, int& numeroCamisa) {
+    const string marcador = "camisa=";
+    size_t posicao = observacao.find(marcador);
+    if (posicao == string::npos) {
+        return false;
+    }
+
+    posicao += marcador.size();
+    if (posicao >= observacao.size() || !isdigit(static_cast<unsigned char>(observacao[posicao]))) {
+        return false;
+    }
+
+    size_t fim = posicao;
+    while (fim < observacao.size() && isdigit(static_cast<unsigned char>(observacao[fim]))) {
+        fim++;
+    }
+
+    numeroCamisa = stoi(observacao.substr(posicao, fim - posicao));
+    return numeroCamisa > 0;
+}
+
 vector<string> separarCamposCSV(const string& linha) {
     vector<string> campos;
     string atual;
@@ -119,7 +140,16 @@ bool carregarSelecoesDoCSV(const vector<string>& caminhos,
             }
         }
 
-        int numeroCamisa = proximoNumeroCamisa[nomeSelecao]++;
+        int numeroCamisa = 0;
+        bool numeroCamisaDefinido = campos.size() >= 11 &&
+                                    tentarExtrairNumeroCamisa(trimCSV(campos[10]), numeroCamisa);
+
+        if (!numeroCamisaDefinido) {
+            numeroCamisa = proximoNumeroCamisa[nomeSelecao]++;
+        } else if (proximoNumeroCamisa[nomeSelecao] <= numeroCamisa) {
+            proximoNumeroCamisa[nomeSelecao] = numeroCamisa + 1;
+        }
+
         mapaSelecoes[nomeSelecao]->convocarJogador(new Jogador(nomeJogador, posicao, numeroCamisa));
     }
 

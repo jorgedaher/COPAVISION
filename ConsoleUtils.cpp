@@ -1,4 +1,4 @@
-#include "ConsoleUtils.hpp"
+#include "ConsoleUtils.hpp" //puxa o hpp 
 
 #include <iostream>
 
@@ -18,3 +18,5 @@ int lerOpcaoIntervalo(int minimo, int maximo) {
     cin.ignore(10000, '\n');
     return opcao;
 }
+
+//serve ora conferir os numeros inseridos pelo usuário.
