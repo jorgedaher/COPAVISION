@@ -16,6 +16,7 @@ public:
     NoArvore* esquerda;
     NoArvore* direita;
 
+    // Cria um no de confronto com os dois times ja definidos.
     NoArvore(string fase, Selecao* t1, Selecao* t2) {
         nomeFase = fase;
         time1 = t1;
@@ -25,6 +26,7 @@ public:
         direita = nullptr;
     }
 
+    // Cria um no apenas com o nome da fase para preencher depois.
     NoArvore(string fase) {
         nomeFase = fase;
         time1 = nullptr;

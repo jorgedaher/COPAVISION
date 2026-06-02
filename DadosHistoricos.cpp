@@ -6,6 +6,7 @@
 
 namespace {
 
+// Remove espacos em branco no inicio e no fim de um texto.
 string trimHistorico(const string& texto) {
     size_t inicio = 0;
     while (inicio < texto.size() && isspace(static_cast<unsigned char>(texto[inicio]))) {
@@ -20,6 +21,7 @@ string trimHistorico(const string& texto) {
     return texto.substr(inicio, fim - inicio);
 }
 
+// Divide uma linha CSV em campos, respeitando aspas e virgulas internas.
 vector<string> separarCamposCSVHistorico(const string& linha) {
     vector<string> campos;
     string atual;
@@ -47,6 +49,7 @@ vector<string> separarCamposCSVHistorico(const string& linha) {
     return campos;
 }
 
+// Converte um texto para inteiro de forma segura.
 bool tentarConverterParaInteiroHistorico(const string& texto, int& valor) {
     if (texto.empty()) {
         return false;
@@ -59,6 +62,7 @@ bool tentarConverterParaInteiroHistorico(const string& texto, int& valor) {
 
 }
 
+// Carrega os dados historicos de um dos caminhos CSV informados.
 bool carregarDadosHistoricosCSV(const vector<string>& caminhos, DadosHistoricosCopa& dados) {
     ifstream arquivo;
     string caminhoUsado;
@@ -140,6 +144,7 @@ bool carregarDadosHistoricosCSV(const vector<string>& caminhos, DadosHistoricosC
     return carregouAlgumDado;
 }
 
+// Retorna o maior artilheiro historico de uma selecao.
 string obterMaiorArtilheiroHistorico(const string& nomeSelecao, const DadosHistoricosCopa& dadosHistoricos) {
     auto it = dadosHistoricos.artilheiros.find(nomeSelecao);
     if (it != dadosHistoricos.artilheiros.end()) {
@@ -149,6 +154,7 @@ string obterMaiorArtilheiroHistorico(const string& nomeSelecao, const DadosHisto
     return "Dados historicos nao cadastrados para esta selecao";
 }
 
+// Retorna a quantidade de titulos de Copa de uma selecao.
 int obterTitulosCopa(const string& nomeSelecao, const DadosHistoricosCopa& dadosHistoricos) {
     auto it = dadosHistoricos.titulos.find(nomeSelecao);
     if (it != dadosHistoricos.titulos.end()) {
@@ -158,6 +164,7 @@ int obterTitulosCopa(const string& nomeSelecao, const DadosHistoricosCopa& dados
     return 0;
 }
 
+// Retorna o numero de participacoes em Copa de uma selecao.
 int obterParticipacoesCopa(const string& nomeSelecao, const DadosHistoricosCopa& dadosHistoricos) {
     auto it = dadosHistoricos.participacoes.find(nomeSelecao);
     if (it != dadosHistoricos.participacoes.end()) {
@@ -167,6 +174,7 @@ int obterParticipacoesCopa(const string& nomeSelecao, const DadosHistoricosCopa&
     return -1;
 }
 
+// Exibe a lista de selecoes campeas e seus titulos.
 void exibirDadosSelecoesCampeas(const DadosHistoricosCopa& dadosHistoricos) {
     cout << "\n=============================================" << endl;
     cout << "         DADOS DAS SELECOES CAMPEAS         " << endl;
@@ -183,6 +191,7 @@ void exibirDadosSelecoesCampeas(const DadosHistoricosCopa& dadosHistoricos) {
     cout << "=============================================\n" << endl;
 }
 
+// Exibe curiosidades historicas cadastradas no CSV.
 void exibirCuriosidadesDaCopa(const DadosHistoricosCopa& dadosHistoricos) {
     cout << "\n=============================================" << endl;
     cout << "             CURIOSIDADES DA COPA           " << endl;

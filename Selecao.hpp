@@ -24,6 +24,7 @@ private:
     NoJogador* cabecaElenco;
 
 public:
+    // Inicializa a selecao com dados basicos e estatisticas zeradas.
     Selecao(string n, string cont, int titulos) {
         nome = n;
         continente = cont;
@@ -35,6 +36,7 @@ public:
         cabecaElenco = nullptr;
     }
 
+    // Libera toda a lista encadeada de jogadores convocados.
     ~Selecao() {
         NoJogador* atual = cabecaElenco;
         while (atual != nullptr) {
@@ -46,6 +48,7 @@ public:
         cabecaElenco = nullptr;
     }
 
+    // Adiciona um novo jogador ao fim da lista encadeada do elenco.
     void convocarJogador(Jogador* novoJogador) {
         NoJogador* novoNo = new NoJogador(novoJogador);
         if (cabecaElenco == nullptr) {
@@ -59,6 +62,7 @@ public:
         }
     }
 
+    // Exibe todos os jogadores convocados da selecao.
     void exibirElenco() {
         cout << "--- Elenco da Selecao: " << nome << " ---" << endl;
         NoJogador* atual = cabecaElenco;
@@ -74,7 +78,7 @@ public:
         cout << "-----------------------------------" << endl;
     }
 
-    // Busca inteligente de jogadores na Lista Encadeada
+    // Busca um jogador por trecho do nome (case-insensitive).
     Jogador* buscarJogadorPorNome(string termoBusca) {
         string termoLower = termoBusca;
         transform(termoLower.begin(), termoLower.end(), termoLower.begin(), ::tolower);
@@ -95,7 +99,7 @@ public:
         return nullptr;
     }
 
-    // Busca por nome completo (case-insensitive)
+    // Busca por nome completo (case-insensitive).
     Jogador* buscarJogadorNomeExato(string nomeBusca) {
         string nomeBuscaLower = nomeBusca;
         transform(nomeBuscaLower.begin(), nomeBuscaLower.end(), nomeBuscaLower.begin(), 
@@ -115,7 +119,7 @@ public:
         return nullptr;
     }
 
-    // Lista jogadores cujo nome (ou sobrenome) comeca com o termo digitado (case-insensitive)
+    // Lista jogadores cujo nome ou sobrenome inicia com o termo digitado.
     vector<Jogador*> buscarJogadoresPorPrefixo(string termoBusca) {
         vector<Jogador*> encontrados;
         string termoLower = termoBusca;
@@ -172,13 +176,21 @@ public:
         return encontrados;
     }
 
+    // Retorna o nome da selecao.
     string getNome() { return nome; }
+    // Retorna os pontos acumulados na competicao.
     int getPontos() { return pontos; }
+    // Retorna o saldo de gols da selecao.
     int getSaldoGols() { return golsPro - golsContra; }
+    // Retorna a quantidade de gols marcados.
     int getGolsPro() { return golsPro; }
+    // Retorna a quantidade de vitorias.
     int getVitorias() { return vitorias; }
+    // Soma 3 pontos e incrementa o numero de vitorias.
     void adicionarVitoria() { pontos += 3; vitorias++; }
+    // Soma 1 ponto por empate.
     void adicionarEmpate() { pontos += 1; }
+    // Atualiza gols marcados e sofridos da selecao.
     void registrarGols(int marcados, int sofridos) {
         golsPro += marcados;
         golsContra += sofridos;

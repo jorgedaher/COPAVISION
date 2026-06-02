@@ -9,6 +9,7 @@
 
 namespace {
 
+// Remove espacos em branco no inicio e no fim do campo CSV.
 string trimCSV(const string& texto) {
     size_t inicio = 0;
     while (inicio < texto.size() && isspace(static_cast<unsigned char>(texto[inicio]))) {
@@ -23,6 +24,7 @@ string trimCSV(const string& texto) {
     return texto.substr(inicio, fim - inicio);
 }
 
+// Extrai o numero da camisa a partir de um texto no formato "camisa=XX".
 bool tentarExtrairNumeroCamisa(const string& observacao, int& numeroCamisa) {
     const string marcador = "camisa=";
     size_t posicao = observacao.find(marcador);
@@ -44,6 +46,7 @@ bool tentarExtrairNumeroCamisa(const string& observacao, int& numeroCamisa) {
     return numeroCamisa > 0;
 }
 
+// Separa os campos de uma linha CSV respeitando aspas duplas.
 vector<string> separarCamposCSV(const string& linha) {
     vector<string> campos;
     string atual;
@@ -73,6 +76,7 @@ vector<string> separarCamposCSV(const string& linha) {
 
 }
 
+// Carrega selecoes e jogadores de um arquivo CSV e organiza por grupos.
 bool carregarSelecoesDoCSV(const vector<string>& caminhos,
                           vector<Selecao*>& catalogoSelecoes,
                           unordered_map<string, vector<Selecao*>>& gruposDaCopa,
@@ -164,6 +168,7 @@ bool carregarSelecoesDoCSV(const vector<string>& caminhos,
     return true;
 }
 
+// Carrega um conjunto reduzido de selecoes para testes locais.
 void carregarSelecoesTeste(vector<Selecao*>& catalogoSelecoes,
                           unordered_map<string, vector<Selecao*>>& gruposDaCopa,
                           vector<string>& ordemGrupos) {

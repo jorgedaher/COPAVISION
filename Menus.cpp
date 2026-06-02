@@ -9,6 +9,7 @@ using namespace std;
 
 namespace {
 
+// Exibe as selecoes disponiveis e retorna o indice escolhido pelo usuario.
 int escolherSelecao(const vector<Selecao*>& catalogoSelecoes) {
     cout << "\nSelecoes disponiveis:" << endl;
     for (size_t i = 0; i < catalogoSelecoes.size(); i++) {
@@ -20,6 +21,7 @@ int escolherSelecao(const vector<Selecao*>& catalogoSelecoes) {
 
 }
 
+// Mostra o menu principal da aplicacao.
 void exibirMenuPrincipal() {
     cout << "\n=============================================" << endl;
     cout << "            MENU PRINCIPAL - COPA VISION    " << endl;
@@ -33,6 +35,7 @@ void exibirMenuPrincipal() {
     cout << "Escolha uma opcao: ";
 }
 
+// Controla o menu de informacoes das selecoes.
 void menuSelecoes(vector<Selecao*>& catalogoSelecoes, const DadosHistoricosCopa& dadosHistoricos) {
     if (catalogoSelecoes.empty()) {
         cout << "[ERRO] Nao ha selecoes carregadas." << endl;
@@ -96,6 +99,7 @@ void menuSelecoes(vector<Selecao*>& catalogoSelecoes, const DadosHistoricosCopa&
     }
 }
 
+// Busca um jogador por nome exato ou prefixo entre todas as selecoes.
 Jogador* barraDePesquisa(Selecao* todasSelecoes[], int totalSelecoes) {
     struct OpcaoBusca {
         Jogador* jogador;
@@ -172,6 +176,7 @@ Jogador* barraDePesquisa(Selecao* todasSelecoes[], int totalSelecoes) {
     }
 }
 
+// Reutiliza a busca e valida que o jogador escolhido seja goleiro.
 Jogador* escolherMelhorGoleiro(Selecao* todasSelecoes[], int totalSelecoes) {
     while (true) {
         Jogador* escolhido = barraDePesquisa(todasSelecoes, totalSelecoes);

@@ -17,6 +17,7 @@ private:
     bool partidaJogada;
 
 public:
+    // Inicializa a partida entre dois times com placar zerado.
     Partida(Selecao* casa, Selecao* fora) {
         timeCasa = casa;
         timeFora = fora;
@@ -25,6 +26,7 @@ public:
         partidaJogada = false;
     }
 
+    // Registra um placar manual para fase de grupos e atualiza estatisticas.
     void jogarFaseGrupos(int golsC, int golsF) {
         golsCasa = golsC;
         golsFora = golsF;
@@ -48,6 +50,7 @@ public:
         }
     }
 
+    // Gera um placar aleatorio simples e executa a partida.
     void simularJogoAutomatizado() {
         int golsC = rand() % 4; 
         int golsF = rand() % 4; 
@@ -58,6 +61,7 @@ public:
         cout << endl;
     }
 
+    // Mostra o placar final, se a partida ja tiver sido jogada.
     void exibirPlacar() {
         if (partidaJogada) {
             cout << "Placar Final: " << timeCasa->getNome() << " " << golsCasa << " x " 

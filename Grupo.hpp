@@ -14,6 +14,7 @@ private:
     int quantidadeAtual;
 
 public:
+    // Inicializa um grupo vazio com nome e espaco para 4 selecoes.
     Grupo(string nome) {
         nomeGrupo = nome;
         quantidadeAtual = 0;
@@ -22,6 +23,7 @@ public:
         }
     }
 
+    // Adiciona uma selecao ao grupo na proxima posicao disponivel.
     void adicionarSelecao(Selecao* s) {
         if (quantidadeAtual < 4) {
             times[quantidadeAtual] = s;
@@ -29,6 +31,7 @@ public:
         }
     }
 
+    // Permite definir manualmente a classificacao final do grupo.
     void definirPosicoesManuais() {
         cout << "\n=============================================" << endl;
         cout << "      DEFINA AS POSICOES DO " << nomeGrupo << "      " << endl;
@@ -63,11 +66,16 @@ public:
         cout << "\n-> " << nomeGrupo << " definido com sucesso!" << endl;
     }
 
+    // Retorna o identificador textual do grupo.
     string getNomeGrupo() { return nomeGrupo; }
+    // Retorna a selecao classificada em primeiro lugar.
     Selecao* getPrimeiro() { return times[0]; }
+    // Retorna a selecao classificada em segundo lugar.
     Selecao* getSegundo() { return times[1]; }
+    // Retorna a selecao classificada em terceiro lugar.
     Selecao* getTerceiro() { return times[2]; }
 
+    // Exibe a tabela final de classificacao do grupo.
     void exibirTabela() {
         cout << "\n=== CLASSIFICACAO FINAL: " << nomeGrupo << " ===" << endl;
         cout << "Pos | Selecao" << endl;

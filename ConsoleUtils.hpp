@@ -1,8 +1,7 @@
 #ifndef CONSOLE_UTILS_HPP
 #define CONSOLE_UTILS_HPP
 
+// Le uma opcao numerica valida entre minimo e maximo.
 int lerOpcaoIntervalo(int minimo, int maximo);
 
 #endif
-
-//retorna quando o valor estiver entre o minimo e o maximo

@@ -8,6 +8,7 @@ using namespace std;
 
 class ArvoreMataMata {
 public:
+    // Percorre a arvore em pos-ordem e decide o vencedor de cada confronto.
     void simularMataMata(NoArvore* no) {
         if (no == nullptr) return;
 

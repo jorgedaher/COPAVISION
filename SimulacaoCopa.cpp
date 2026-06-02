@@ -18,14 +18,15 @@ using namespace std;
 namespace {
 
 struct ClassificacaoGrupo {
-    Selecao* primeiro = nullptr;
+    Selecao* primeiro = nullptr; 
     Selecao* segundo = nullptr;
     Selecao* terceiro = nullptr;
     Selecao* quarto = nullptr;
 };
 
+// Verifica recursivamente se existe uma distribuicao valida de grupos para os slots restantes.
 bool existeDistribuicaoValida(const vector<vector<string>>& confrontosRestantes,
-                             size_t indice,
+                             size_t indice, 
                              unordered_set<string> gruposDisponiveis) {
     if (indice >= confrontosRestantes.size()) {
         return true;
@@ -47,6 +48,7 @@ bool existeDistribuicaoValida(const vector<vector<string>>& confrontosRestantes,
     return false;
 }
 
+// Permite selecionar os melhores terceiros de forma consistente com os confrontos oficiais.
 unordered_map<string, Selecao*> selecionarMelhoresTerceiros(
     const unordered_map<string, ClassificacaoGrupo>& classificacaoPorGrupo,
     const vector<string>& ordemGrupos,
@@ -101,6 +103,7 @@ unordered_map<string, Selecao*> selecionarMelhoresTerceiros(
     }
 }
 
+// Escolhe um terceiro colocado elegivel para um jogo especifico do mata-mata.
 Selecao* escolherTerceiroElegivel(const string& nomeJogo,
                                   Selecao* liderDoGrupo,
                                   const vector<string>& gruposElegiveis,
@@ -147,6 +150,7 @@ Selecao* escolherTerceiroElegivel(const string& nomeJogo,
     return escolhido;
 }
 
+// Libera os nos de uma arvore binaria de mata-mata em pos-ordem.
 void liberarArvore(NoArvore* no) {
     if (no == nullptr) {
         return;
@@ -157,6 +161,7 @@ void liberarArvore(NoArvore* no) {
     delete no;
 }
 
+// Executa um confronto eliminatorio e retorna o classificado.
 Selecao* simularConfrontoMataMata(const string& nomeFase, const string& nomeJogo, Selecao* time1, Selecao* time2) {
     cout << "\n=============================================" << endl;
     cout << "              " << nomeFase << "              " << endl;
@@ -195,6 +200,7 @@ Selecao* simularConfrontoMataMata(const string& nomeFase, const string& nomeJogo
     return vencedor;
 }
 
+// Simula uma fase inteira do mata-mata e retorna os classificados.
 vector<Selecao*> simularRodadaMataMata(const string& nomeFase,
                                        int numeroInicialJogo,
                                        const vector<pair<Selecao*, Selecao*>>& jogos) {
@@ -210,6 +216,7 @@ vector<Selecao*> simularRodadaMataMata(const string& nomeFase,
     return classificados;
 }
 
+// Atribui os terceiros colocados aos jogos respeitando as combinacoes permitidas.
 bool atribuirTerceirosAosJogos(const vector<vector<string>>& slots,
                                size_t indice,
                                unordered_map<string, Selecao*> terceirosDisponiveis,
@@ -241,6 +248,7 @@ bool atribuirTerceirosAosJogos(const vector<vector<string>>& slots,
 
 }
 
+// Executa toda a simulacao da Copa: grupos, mata-mata e premiacoes.
 void executarSimulacaoCopa(vector<Selecao*>& catalogoSelecoes,
                           unordered_map<string, vector<Selecao*>>& gruposDaCopa,
                           vector<string>& ordemGrupos) {

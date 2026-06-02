@@ -13,6 +13,7 @@
 
 using namespace std;
 
+// Inicializa os dados do sistema, carrega os arquivos CSV e controla o loop principal do menu.
 int main() {
     srand(time(0));
 

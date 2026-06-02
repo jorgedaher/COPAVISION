@@ -10,6 +10,7 @@ public:
     Jogador* atleta;
     NoJogador* proximo;
 
+    // Cria um no da lista encadeada apontando para um jogador.
     NoJogador(Jogador* j) {
         atleta = j;
         proximo = nullptr;

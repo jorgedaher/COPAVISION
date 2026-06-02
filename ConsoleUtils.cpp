@@ -1,9 +1,10 @@
-#include "ConsoleUtils.hpp" //puxa o hpp 
+#include "ConsoleUtils.hpp"
 
 #include <iostream>
 
 using namespace std;
 
+// Le um numero do usuario e garante que ele esteja dentro do intervalo informado.
 int lerOpcaoIntervalo(int minimo, int maximo) {
     int opcao = 0;
     cin >> opcao;
@@ -18,5 +19,3 @@ int lerOpcaoIntervalo(int minimo, int maximo) {
     cin.ignore(10000, '\n');
     return opcao;
 }
-
-//serve ora conferir os numeros inseridos pelo usuário.

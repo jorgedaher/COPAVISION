@@ -9,6 +9,7 @@
 
 using namespace std;
 
+// Inicia e controla a simulacao completa da Copa Vision.
 void executarSimulacaoCopa(vector<Selecao*>& catalogoSelecoes,
                           unordered_map<string, vector<Selecao*>>& gruposDaCopa,
                           vector<string>& ordemGrupos);
