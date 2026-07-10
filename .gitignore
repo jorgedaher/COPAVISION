@@ -1,12 +1,19 @@
-.DS_Store
-
-# Build outputs
-main
-copavision
-copa
+# C++ backend
 *.exe
-*.out
 *.o
+*.obj
+*.pdb
+server.log
 
-# VS Code local settings
+# Node / React frontend
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# IDEs and OS files
 .vscode/
+.vs/
+.idea/
+.DS_Store
+Thumbs.db
