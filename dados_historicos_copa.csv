@@ -9,6 +9,37 @@ artilheiro,Spain,David Villa (59 gols),
 artilheiro,Uruguay,Luis Suarez (68 gols),
 artilheiro,Netherlands,Robin van Persie (50 gols),
 artilheiro,Belgium,Romelu Lukaku (83 gols),
+artilheiro,Algeria,"Salah Assad, Abdelmoumene Djabou e Islam Slimani (2 gols cada)",
+artilheiro,Australia,Tim Cahill (5 gols),
+artilheiro,Austria,Erich Probst (6 gols),
+artilheiro,Bosnia-Herzegovina,"Edin Dzeko, Vedad Ibisevic, Miralem Pjanic e Avdija Vrsajevic (1 gol cada)",
+artilheiro,Canada,Alphonso Davies (1 gol),
+artilheiro,Colombia,James Rodriguez (6 gols),
+artilheiro,Croatia,Davor Suker e Ivan Perisic (6 gols cada),
+artilheiro,Czechia,Oldrich Nejedly (7 gols),
+artilheiro,Ecuador,Enner Valencia (6 gols),
+artilheiro,Egypt,Abdulrahman Fawzi e Mo Salah (2 gols cada),
+artilheiro,Ghana,Asamoah Gyan (6 gols),
+artilheiro,Haiti,Emmanuel Sanon (2 gols),
+artilheiro,Iran,Mehdi Taremi (2 gols),
+artilheiro,Iraq,Ahmed Radhi (1 gol),
+artilheiro,Ivory Coast,"Aruna Dindane, Didier Drogba, Wilfried Bony e Gervinho (2 gols cada)",
+artilheiro,Japan,Keisuke Honda (4 gols),
+artilheiro,Morocco,Youssef En-Nesyri (3 gols),
+artilheiro,New Zealand,"Winston Reid, Shane Smeltz, Steve Sumner e Steve Wooddin (1 gol cada)",
+artilheiro,Norway,Kjetil Rekdal (2 gols),
+artilheiro,Panama,Felipe Baloy (1 gol),
+artilheiro,Paraguay,Nelson Cuevas (3 gols),
+artilheiro,Qatar,Mohammed Muntari (1 gol),
+artilheiro,Saudi Arabia,Sami Al-Jaber e Salem Al-Dawsari (3 gols cada),
+artilheiro,Scotland,Joe Jordan (4 gols),
+artilheiro,Senegal,Papa Bouba Diop (3 gols),
+artilheiro,South Africa,Shaun Bartlett e Benni McCarthy (2 gols cada),
+artilheiro,South Korea,"Ahn Jung-hwan, Park Ji-sung e Son Heung-min (3 gols cada)",
+artilheiro,Sweden,Kennet Andersson e Henrik Larsson (5 gols cada),
+artilheiro,Switzerland,Josef Hugi (6 gols),
+artilheiro,Tunisia,Wahbi Khazri (3 gols),
+artilheiro,Türkiye,"Burhan Sargun, Suat Mamat e Ilhan Mansiz (3 gols cada)",
 titulo,Brazil,,5
 titulo,Germany,,4
 titulo,Italy,,4
@@ -30,6 +61,42 @@ participacao,Netherlands,,11
 participacao,Belgium,,14
 participacao,Mexico,,17
 participacao,United States,,11
+participacao,Algeria,,4
+participacao,Australia,,6
+participacao,Austria,,7
+participacao,Bosnia-Herzegovina,,0
+participacao,Canada,,2
+participacao,Cape Verde,,0
+participacao,Colombia,,6
+participacao,Congo DR,,0
+participacao,Croatia,,6
+participacao,Curacao,,0
+participacao,Czechia,,8
+participacao,Ecuador,,4
+participacao,Egypt,,3
+participacao,Ghana,,4
+participacao,Haiti,,1
+participacao,Iran,,6
+participacao,Iraq,,0
+participacao,Ivory Coast,,3
+participacao,Japan,,7
+participacao,Jordan,,0
+participacao,Morocco,,6
+participacao,New Zealand,,2
+participacao,Norway,,3
+participacao,Panama,,1
+participacao,Paraguay,,8
+participacao,Qatar,,1
+participacao,Saudi Arabia,,6
+participacao,Scotland,,8
+participacao,Senegal,,3
+participacao,South Africa,,3
+participacao,South Korea,,11
+participacao,Sweden,,11
+participacao,Switzerland,,12
+participacao,Tunisia,,6
+participacao,Türkiye,,1
+participacao,Uzbekistan,,0
 campea,Brazil,,5
 campea,Germany,,4
 campea,Italy,,4
@@ -41,5 +108,16 @@ campea,Spain,,1
 curiosidade,,A Copa do Mundo de 1930 foi realizada no Uruguai.,
 curiosidade,,A selecao com mais titulos e o Brazil com 5 conquistas.,
 curiosidade,,A maior goleada em Copas foi Hungary 10 x 1 El Salvador em 1982.,
-curiosidade,,Miroslav Klose e o maior artilheiro da historia das Copas com 16 gols.,
+curiosidade,,"Durante a Copa de 2026, Lionel Messi ultrapassou Miroslav Klose (que tinha 16 gols) e se tornou o novo maior artilheiro da historia das Copas do Mundo, disputando a marca ao vivo com Kylian Mbappe.",
 curiosidade,,A Copa de 2026 tera 48 selecoes e novo formato com fase mata-mata ampliada.,
+curiosidade,,"O Uruguai foi sede e campeao da primeira Copa do Mundo, em 1930, disputada por apenas 13 selecoes.",
+curiosidade,,"A Copa de 2026 tera 4 estreantes absolutas que nunca disputaram uma Copa antes: Cabo Verde, Curacao, Jordania e Uzbequistao.",
+curiosidade,,"A Republica Democratica do Congo, que jogou como Zaire em 1974, e uma das poucas selecoes da historia que nunca marcou um gol em Copas do Mundo.",
+curiosidade,,A Franca tem o recorde de gols marcados por um jogador em uma unica edicao: Just Fontaine balancou as redes 13 vezes sozinho na Copa de 1958.,
+curiosidade,,"O recorde de artilheiro da Croacia, 6 gols, foi alcancado por dois jogadores em epocas diferentes: Davor Suker, na estreia do pais em 1998, e Ivan Perisic, vinte anos depois.",
+curiosidade,,"O Marrocos foi a primeira selecao africana da historia a chegar as semifinais de uma Copa do Mundo, em 2022.",
+curiosidade,,"A Nova Zelandia tem uma curiosidade rara: seu recorde de artilheiro esta empatado entre quatro jogadores diferentes, cada um com apenas 1 gol marcado.",
+curiosidade,,"O escoces Joe Jordan foi o unico jogador do seu pais a marcar gols em tres Copas do Mundo diferentes (1974, 1978 e 1982), mas a selecao nunca passou da fase de grupos.",
+curiosidade,,"Wahbi Khazri, artilheiro historico da Tunisia, marcou o gol da vitoria por 1x0 sobre a Franca, entao atual campea mundial, na Copa de 2022.",
+curiosidade,,"A Coreia do Sul e a selecao asiatica com mais participacoes historicas em Copas do Mundo, tendo chegado as semifinais como anfitria em 2002.",
+curiosidade,,"O Panama so marcou um gol de jogador proprio em toda sua historia em Copas: Felipe Baloy, em 2018, no unico torneio que o pais disputou.",
